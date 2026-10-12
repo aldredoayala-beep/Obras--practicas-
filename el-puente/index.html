@@ -1,1 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EL PUENTE: ideas, necesidades y proyectos que buscan soluciones prácticas.">
+<meta name="theme-color" content="#17324d">
+<title>EL PUENTE | Necesidades y soluciones</title>
+<style>
+:root{--navy:#17324d;--blue:#234a6b;--bg:#f3f6f8;--ink:#17202a;--muted:#62717c;--line:#dce4e9;--white:#fff;--pale:#eaf0f4;--green:#edf7f0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;text-align:center;padding:30px 18px 32px}.brand{font-size:clamp(2rem,7vw,3rem);font-weight:900;letter-spacing:-.04em;margin:0}.tagline{font-size:1.08rem;margin:5px 0 0;color:#e5edf4}.intro{max-width:680px;margin:14px auto 0;color:#f0f5f8}
+main{width:min(900px,100%);margin:0 auto;padding:16px}.card{background:#fff;border:1px solid #edf0f2;border-radius:20px;padding:clamp(16px,4vw,26px);margin:16px 0;box-shadow:0 7px 24px #17324d0b}
+h2{font-size:1.45rem;line-height:1.25;margin:0 0 14px}h3{margin:0 0 8px;font-size:1.1rem}p{margin:8px 0 12px}.muted,.note{color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.step{border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;background:#fbfcfd;font-size:.92rem}
+label{display:block;font-weight:750;margin:14px 0 6px}input,textarea,select{display:block;width:100%;padding:13px 14px;border:1px solid #cbd6de;border-radius:12px;background:#fff;color:var(--ink);font:inherit}textarea{min-height:110px;resize:vertical}
+button{border:0;border-radius:12px;padding:13px 16px;margin-top:12px;width:100%;background:var(--navy);color:#fff;font:inherit;font-weight:800;cursor:pointer}button:hover{background:var(--blue)}button.secondary{background:var(--pale);color:var(--navy)}button.secondary:hover{background:#dce7ee}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid #9cc4e2;outline-offset:2px}
+.listing,.proposal{border:1px solid var(--line);border-radius:14px;padding:15px;margin:12px 0;background:#fff}.listing p,.proposal p{white-space:pre-wrap;overflow-wrap:anywhere}.meta{font-size:.9rem;color:var(--muted)}.proposal.selected{border:2px solid var(--navy);background:#f5f9fc}.pill{display:inline-block;border-radius:999px;padding:4px 9px;background:var(--pale);color:var(--navy);font-size:.82rem;font-weight:750}.success{background:var(--green);border-radius:13px;padding:15px;overflow-wrap:anywhere}.hidden{display:none!important}.small{font-size:.88rem}
+.ideaGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.idea{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fbfcfd}.idea p{margin-bottom:0}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:10px 18px 30px}
+@media(max-width:560px){main{padding:10px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.card{border-radius:16px}.ideaGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1 class="brand">🌉 EL PUENTE</h1>
+<p class="tagline">De una necesidad a una solución real.</p>
+<p class="intro">Un espacio para presentar necesidades, descubrir ideas y convertir proyectos en próximos pasos concretos.</p>
+</header>
+<main>
+<section class="card">
+<h2>El camino</h2>
+<div class="steps"><div class="step">1️⃣ Necesidad</div><div class="step">2️⃣ Propuestas</div><div class="step">3️⃣ Elección</div><div class="step">4️⃣ Resultado</div></div>
+</section>
 
+<section class="card">
+<h2>📝 Publicar una necesidad</h2>
+<p class="muted">El formulario viene con un ejemplo completo. Podés cambiarlo por tu propia idea.</p>
+<form id="needForm">
+<label for="title">¿Qué necesitás resolver?</label>
+<input id="title" maxlength="120" required value="Quiero crear un proyecto que genere trabajo para mi comunidad">
+<label for="category">¿De qué tipo es?</label>
+<select id="category">
+<option>Idea o proyecto</option><option>Trabajo o emprendimiento</option><option>Comunidad o barrio</option><option>Aprendizaje o habilidades</option><option>Reutilizar algo o reducir residuos</option><option>Otro</option>
+</select>
+<label for="detail">Contanos el problema o proyecto</label>
+<textarea id="detail" maxlength="1500">Busco una idea práctica que pueda empezar con pocos recursos, que sea útil para otras personas y que pueda crecer con el tiempo. Me gustaría reunir propuestas, comparar los primeros pasos y probar la opción más sencilla antes de invertir demasiado.</textarea>
+<button type="submit">Publicar necesidad</button>
+</form>
+<div id="needView" aria-live="polite"></div>
+</section>
+
+<section class="card" id="proposalsCard">
+<h2>💡 Propuestas para empezar</h2>
+<p class="note small">Las propuestas siguientes son ejemplos ilustrativos, no respuestas de usuarios reales. Esta página de prueba no envía información a otras personas.</p>
+<div id="proposals">
+<article class="proposal" data-index="0"><h3>💡 1. Red de ayuda e intercambio local</h3><p>Crear un tablón sencillo donde vecinos publiquen qué saben hacer, qué necesitan y qué pueden intercambiar: tiempo, habilidades, herramientas o ayuda práctica.</p><div class="meta">⏱️ Prueba inicial: 1 semana · 💰 Costo: bajo</div><button type="button" class="secondary selectProposal" data-index="0">Seleccionar propuesta</button></article>
+<article class="proposal" data-index="1"><h3>💡 2. Banco de ideas reutilizables</h3><p>Reunir ideas para aprovechar objetos, espacios o materiales que suelen quedar sin uso y convertirlos en soluciones o pequeños emprendimientos.</p><div class="meta">⏱️ Prueba inicial: 2 semanas · 💰 Costo: bajo a medio</div><button type="button" class="secondary selectProposal" data-index="1">Seleccionar propuesta</button></article>
+<article class="proposal" data-index="2"><h3>💡 3. Proyecto piloto de 30 días</h3><p>Elegir una necesidad concreta, hablar con algunas personas, hacer una prueba pequeña y registrar qué funcionó antes de ampliar el proyecto.</p><div class="meta">⏱️ Prueba inicial: 30 días · 💰 Costo: gradual</div><button type="button" class="secondary selectProposal" data-index="2">Seleccionar propuesta</button></article>
+</div>
+<button id="chooseBtn" type="button">Elegir esta solución</button>
+</section>
+
+<section class="card">
+<h2>🧭 Otras ideas para explorar</h2>
+<div class="ideaGrid">
+<article class="idea"><h3>Biblioteca de habilidades</h3><p>Personas comparten mini guías para enseñar algo que saben hacer.</p></article>
+<article class="idea"><h3>Mapa de recursos compartidos</h3><p>Registrar herramientas, espacios y recursos que se puedan prestar o reutilizar de forma organizada.</p></article>
+<article class="idea"><h3>Transformar problemas en retos</h3><p>Describir un problema cotidiano y pedir ideas prácticas, con objetivos y límites claros.</p></article>
+<article class="idea"><h3>Prueba antes de invertir</h3><p>Una plantilla para probar una idea pequeña y aprender antes de gastar más dinero.</p></article>
+</div>
+</section>
+
+<section class="card hidden" id="resultCard">
+<h2>✅ Próximo paso del proyecto</h2>
+<div id="result" aria-live="polite"></div>
+<p class="note small">Este resultado solo se muestra en este navegador. Para que las publicaciones se compartan entre personas y queden guardadas, hace falta conectar un servidor o una base de datos.</p>
+<button class="secondary" id="resetBtn" type="button">Volver a empezar</button>
+</section>
+
+<section class="card">
+<h2>Acerca de EL PUENTE</h2>
+<p>EL PUENTE es un prototipo de una plataforma para conectar necesidades con ideas y posibles soluciones. La intención es crecer paso a paso: primero probar la experiencia, luego incorporar usuarios reales, almacenamiento, moderación y herramientas de contacto seguro.</p>
+<p class="note small">Privacidad: no ingreses contraseñas, datos bancarios ni información personal sensible en esta demostración.</p>
+</section>
+</main>
+<footer>EL PUENTE · Prototipo completo de demostración · 2026</footer>
+<script>
+"use strict";
+const proposals=[
+{name:"Red de ayuda e intercambio local",text:"Crear un tablón sencillo donde vecinos publiquen qué saben hacer, qué necesitan y qué pueden intercambiar: tiempo, habilidades, herramientas o ayuda práctica.",time:"Prueba inicial: 1 semana",cost:"Costo bajo",steps:["Anotar tres necesidades concretas de la comunidad.","Preguntar a cinco personas qué habilidad o recurso podrían aportar.","Probar un intercambio sencillo y pedir comentarios."]},
+{name:"Banco de ideas reutilizables",text:"Reunir ideas para aprovechar objetos, espacios o materiales que suelen quedar sin uso y convertirlos en soluciones o pequeños emprendimientos.",time:"Prueba inicial: 2 semanas",cost:"Costo bajo a medio",steps:["Elegir un objeto, espacio o material que se desperdicie.","Buscar dos formas seguras y realistas de reutilizarlo.","Calcular materiales y probar una sola idea pequeña."]},
+{name:"Proyecto piloto de 30 días",text:"Elegir una necesidad concreta, hablar con algunas personas, hacer una prueba pequeña y registrar qué funcionó antes de ampliar el proyecto.",time:"Prueba inicial: 30 días",cost:"Inversión gradual",steps:["Definir un problema y una meta que se pueda comprobar.","Hacer una prueba pequeña sin comprometer mucho dinero.","Revisar los resultados y decidir si conviene continuar."]}
+];
+let selected=null;
+const $=id=>document.getElementById(id);
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function selectProposal(i){selected=i;document.querySelectorAll(".proposal").forEach(c=>c.classList.remove("selected"));const el=document.querySelector('.proposal[data-index="'+i+'"]');if(el)el.classList.add("selected");$("chooseBtn").textContent="Confirmar: "+proposals[i].name;}
+document.querySelectorAll(".selectProposal").forEach(b=>b.addEventListener("click",()=>selectProposal(Number(b.dataset.index))));
+$("needForm").addEventListener("submit",e=>{e.preventDefault();const title=$("title").value.trim(),detail=$("detail").value.trim(),category=$("category").value;if(!title){$("title").focus();return;}$("needView").innerHTML='<div class="listing"><span class="pill">📌 Necesidad registrada en esta sesión</span><h3 style="margin-top:10px">'+esc(title)+'</h3><div class="meta">'+esc(category)+'</div><p>'+esc(detail)+'</p></div>';$("proposalsCard").scrollIntoView({behavior:"smooth",block:"start"});});
+$("chooseBtn").addEventListener("click",()=>{if(selected===null){alert("Primero seleccioná una propuesta.");return;}const p=proposals[selected];$("result").innerHTML='<div class="success"><h3>'+esc(p.name)+'</h3><p>'+esc(p.text)+'</p><p><b>Tiempo orientativo:</b> '+esc(p.time)+'<br><b>Costo orientativo:</b> '+esc(p.cost)+'</p><h3>Primeros pasos sugeridos</h3><ol>'+p.steps.map(s=>'<li>'+esc(s)+'</li>').join("")+'</ol><p><b>Estado:</b> Propuesta elegida — lista para planificar.</p></div>';$("resultCard").classList.remove("hidden");$("resultCard").scrollIntoView({behavior:"smooth",block:"start"});});
+$("resetBtn").addEventListener("click",()=>{selected=null;$("needForm").reset();$("needView").innerHTML="";$("resultCard").classList.add("hidden");document.querySelectorAll(".proposal").forEach(c=>c.classList.remove("selected"));$("chooseBtn").textContent="Elegir esta solución";$("formTitle")?.scrollIntoView({behavior:"smooth",block:"start"});});
+</script>
+</body>
+</html>
